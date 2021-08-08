@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  {%load static %}
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <title>
+        Home
+    </title>
+    <style>
+      input[type=submit]{
+      background:#ED5A6B;
+      color:white;
+    }
+    </style>
+
+  </head>
+
+  <body>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="container-fluid">
+        <div class="row mx-auto m-3">
+            {% for m in menu %}
+              <div class="card mx-auto mb-3" style="width: 18rem;">
+                <img height="150" width="150" src="{{m.image.url }}" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title">{{ m.item_name }}</h5>
+                  <p class="card-text">{{ m.price }} Rs</p>
+                  <input type="submit" value='Order Now' >
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+      </div>
+    </form>
+  </body>
+
+</html>
+
+
+

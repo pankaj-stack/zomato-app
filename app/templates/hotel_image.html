@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  {%load static %}
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <title>
+        Home
+    </title>
+    <style>
+      input[type=submit]{
+      background:green;
+      color:white;
+    }
+    </style>
+
+  </head>
+
+  <body>
+
+    <form method="POST"><div class="container-fluid">
+      {% csrf_token %}
+      <div class="row mx-auto m-3">
+          {% for hotel in hotels %}
+            <div class="card mx-auto mb-3" style="width: 18rem;">
+              <img height="250" width="250" src="{{ hotel.image.url }}" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">{{ hotel.name }}</h5>
+                <p class="card-text">{{ hotel.address }}</p>
+                <p class="card-text">{{ hotel.contact_no }}</p>
+
+                <input type="submit" value="Select">
+              </div>
+            </div>
+          {% endfor %}
+      </div>
+    </div>
+  </form>
+  </body>
+
+</html>
+
+
+
